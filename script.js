@@ -9,6 +9,7 @@ var aiNumbersLength = 5;
 var userNumbers = [];
 var userLenghtMax = 5;
 
+
 //creiamo una funzione per poter generare i numeri da poter comunicare all'utente e facciamo in modo che siano tutti diversi
 
 function createAiNumbers() {
@@ -43,17 +44,37 @@ alert("Ciao di seguito i numeri generati: " + aiNumbers + " tra 30 secondi dovra
 
 setTimeout(function() {
     while (userNumbers.length < userLenghtMax){
-        var userInput = prompt("Inserisci un numero tra " + minNumber + "e" + maxNumber + ".")
+        var userInput = parseInt(prompt("Inserisci un numero tra " + minNumber + "e" + maxNumber + "."));
 
-        if((userNumbers.indexOf(userInput) === -1) && !isNaN(userInput) && userInput < 100){
+        if((userNumbers.indexOf(userInput) === -1) && userInput < 100){
         userNumbers.push(userInput);
         } else{
             alert("il numero che hai inserito non è valido")
         }
     }
 
+    //ora controlliamo i numeri che abbiamo inseriti con quelli generati dal computer, e indichamo all'utente quante volte ha indovinato e quali sono quelli che ha indovinato.
+
+  
+    var numbersCorrispondenti = [];
+    
+    for( var i = 0; i< 5; i++){
+        var elementControllati = userNumbers[i];
+        if(aiNumbers.indexOf(elementControllati) > -1){
+            numbersCorrispondenti.push(elementControllati);
+        }
+    
+        
+    }
+   
+
     console.log(userNumbers);
+
+
+    console.log( " i numeri individuati sono " + numbersCorrispondenti.length + " e sono " + numbersCorrispondenti)
 }, 30 * 1000)
+
+
 
 
 
